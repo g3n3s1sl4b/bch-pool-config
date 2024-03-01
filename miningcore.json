@@ -1,0 +1,122 @@
+{
+    "logging": {
+      "level": "info",
+      "enableConsoleLog": true,
+      "enableConsoleColors": true,
+      "logFile": "",
+      "apiLogFile": "",
+      "logBaseDirectory": "",
+      "perPoolLogFile": true
+    },
+    "banning": {
+      "manager": "Integrated",
+      "banOnJunkReceive": true,
+      "banOnInvalidShares": false,
+      "banOnLoginFailure": true
+    },
+    "paymentProcessing": {
+      "enabled": true,
+      "interval": 3600
+    },
+    "notifications": {
+      "enabled": true,
+      "email": {
+        "host": "smtp.yandex.ru",
+        "port": 465,
+        "user": "oleg.palmieri",
+        "password": "Deface1984!",
+        "fromAddress": "oleg.palmieri@ya.ru",
+        "fromName": "Pool Support"
+      },
+      "admin": {
+        "enabled": true,
+        "emailAddress": "oleg.palmieri@ya.ru",
+        "notifyBlockFound": true
+      }
+    },
+    "persistence": {
+      "postgres": {
+        "host": "127.0.0.1",
+        "port": 5432,
+        "user": "miningcore",
+        "password": "2BjnKE63!",
+        "database": "miningcore"
+      }
+    },
+    "shareRecoveryFile": "/app/recovered-shares.txt",
+    "api": {
+      "enabled": true,
+      //"ssl": {
+        // "enabled": true,
+        // "sslPfxFile": "cert.pfx",
+        // "sslPfxPassword": "deface"
+      //},
+      "listenAddress": "127.0.0.1",
+      "port": 5000,
+      "metricsIpWhitelist": ["127.0.0.1"],
+      "adminIpWhitelist": ["127.0.0.1"],
+      "rateLimiting": {
+        "disabled": false,
+        "rules": [
+          {
+            "Endpoint": "*",
+            "Period": "1s",
+            "Limit": 50
+          }
+        ],
+        "ipWhitelist": ["127.0.0.1"]
+      }
+    },
+    "nicehashClusterConfig": {
+      "enableAutoDiff": false
+    },
+    "clusterName": "devel",
+    "pools": [
+      {
+        "id": "BCH",
+        "enabled": true,
+        "coin": "bitcoin-cash",
+        "address": "1KgbXJY2gEU48d4pyPEtrqhrDxMKo2GZEX",
+        "rewardRecipients": [
+          {
+            //"type": "op",
+            "address": "1KgbXJY2gEU48d4pyPEtrqhrDxMKo2GZEX",
+            "percentage": 0.25
+          }
+        ],
+        "blockRefreshInterval": 100,
+        "jobRebroadcastTimeout": 60,
+        "clientConnectionTimeout": 6000,
+        "banning": {
+          "enabled": false,
+          "time": 3600,
+          "invalidPercent": 50,
+          "checkThreshold": 50
+        },
+        "ports": {
+          "3333": {
+            //"name": "ASIC",
+            "listenAddress": "*",
+            "difficulty": 10000000
+        }
+        },
+        "daemons": [
+          {
+            "host": "127.0.0.1",
+            "port": 8332,
+            "user": "deface",
+            "password": "deface"
+          }
+        ],
+        "paymentProcessing": {
+          "enabled": true,
+          "walletPassword": "2BjnKE63!",
+          "minimumPayment": 0.05,
+          "payoutScheme": "SOLO",
+          "payoutSchemeConfig": {
+            "factor": 0.5
+          }
+        }
+      }
+    ]
+  }
